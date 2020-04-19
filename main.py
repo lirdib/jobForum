@@ -49,7 +49,7 @@ if choice == 1:
         pas = input("Please enter you password")
         fileName = name + ".txt"
         if os.path.exists(fileName):#Check if this user is registered
-            employer = employer(name,pas)
+            employerA = employer(name,pas)
             employer.login(fileName,name,pas)
 
     if ch == 3:
