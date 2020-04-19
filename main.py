@@ -35,3 +35,26 @@ if choice == 1:
         if os.path.exists(fileName):#Check if this user is registered
             worker1 = worker(name,pas)
             worker1.login(fileName,name,pas)
+ if choice == 2:
+    ch = int(input("Press 1 to Sign in or 2 to Log in or 3 to Exit"))
+    if ch == 1:
+        name=input("Please enter you name:")
+        password = input("Please enter you password")  
+        file_name= name + ".txt"
+        signin_file=open(file_name,"w")#Write name and passowrd to a file
+        signin_file.write(name+"."+password)
+        signin_file.close()
+    if ch == 2:
+        name = input("Please enter you name:")
+        pas = input("Please enter you password")
+        fileName = name + ".txt"
+        if os.path.exists(fileName):#Check if this user is registered
+            employer = employer(name,pas)
+            employer.login(fileName,name,pas)
+
+    if ch == 3:
+       print (quit)
+       quit() 
+       
+            
+            
