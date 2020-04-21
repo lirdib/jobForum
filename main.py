@@ -40,8 +40,34 @@ class employer:
             self.electronic[0][0]= self.wage
             self.electronic[0][1]=self.company
             print(self.electronic[0][0])
-
-
+            fn = self.name+".txt"
+            fi = open(fn,"w")
+            fi.write(self.electronic[0][0]+"."+self.electronic[0][1])
+            fi.close()
+        if type==2:
+            print("Please enter the company name:")
+            self.company=input()
+            print("Please enter your wage:")
+            self.wage = int(input())
+            self.finance[0][0]= self.wage
+            self.finance[0][1]=self.company
+            print(self.electronic[0][0])
+            fn = self.name+".txt"
+            fi = open(fn,"w")
+            fi.write(self.finance[0][0]+"."+self.finance[0][1])
+            fi.close()
+        if type == 3:
+            print("Please enter the company name:")
+            self.company = input()
+            print("Please enter your wage:")
+            self.wage = int(input())
+            self.mechanics[0][0] = self.wage
+            self.mechanics[0][1] = self.company
+            print(self.electronic[0][0])
+            fn = self.name + ".txt"
+            fi = open(fn, "w")
+            fi.write(self.mechanics[0][0] + "." + self.mechanics[0][1])
+            fi.close()
 
 
 print("---Welcome to the job forum---\n Please press 1 to search for job, 2 to post a job offer, press 3 to exit")
@@ -96,9 +122,8 @@ if choice == 3:
     quit()
 
 if login_flag == True:
-    if flag == False:
+    if flag == False: #Employer
         employerA.make_a_new_offer()
 
-       
             
             
