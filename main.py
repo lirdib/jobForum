@@ -40,9 +40,10 @@ class employer:
             self.electronic[0][0]= self.wage
             self.electronic[0][1]=self.company
             print(self.electronic[0][0])
-            fn = self.name+".txt"
+            global fn
+            fn = self.name+"jobs.txt"
             fi = open(fn,"w")
-            fi.write(self.electronic[0][0]+"."+self.electronic[0][1])
+            fi.write(str(self.electronic[0][0])+"."+str(self.finance[0][1]))
             fi.close()
         if type==2:
             print("Please enter the company name:")
@@ -52,9 +53,8 @@ class employer:
             self.finance[0][0]= self.wage
             self.finance[0][1]=self.company
             print(self.electronic[0][0])
-            fn = self.name+".txt"
             fi = open(fn,"w")
-            fi.write(self.finance[0][0]+"."+self.finance[0][1])
+            fi.write(str(self.finance[0][0])+"."+str(self.finance[0][1]))
             fi.close()
         if type == 3:
             print("Please enter the company name:")
@@ -64,11 +64,14 @@ class employer:
             self.mechanics[0][0] = self.wage
             self.mechanics[0][1] = self.company
             print(self.electronic[0][0])
-            fn = self.name + ".txt"
             fi = open(fn, "w")
-            fi.write(self.mechanics[0][0] + "." + self.mechanics[0][1])
+            fi.write(str(self.mechanics[0][0]) + "." + str(self.mechanics[0][1]))
             fi.close()
+    def print_offers(self):
+        f_name = self.name+"jobs.txt"
 
+
+       
 
 print("---Welcome to the job forum---\n Please press 1 to search for job, 2 to post a job offer, press 3 to exit")
 choice = int(input())
@@ -123,7 +126,10 @@ if choice == 3:
 
 if login_flag == True:
     if flag == False: #Employer
-        employerA.make_a_new_offer()
+        print("Press 1 to make a new offer, press 2 to see other offers, press 3 to get back to menu")
+        c= int(input())
+        if c == 1:
+            employerA.make_a_new_offer()
 
             
             
