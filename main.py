@@ -32,6 +32,8 @@ class employer:
         self.electronic = [[0 for x in range(w)] for y in range(h)]# First column would be company name and second wage
         self.finance =[[0 for x in range(w)] for y in range(h)]
         self.mechanics =[[0 for x in range(w)] for y in range(h)]
+        global fn
+        fn = self.name + "jobs.txt"
         if type==1:
             print("Please enter the company name:")
             self.company=input()
@@ -40,10 +42,9 @@ class employer:
             self.electronic[0][0]= self.wage
             self.electronic[0][1]=self.company
             print(self.electronic[0][0])
-            global fn
-            fn = self.name+"jobs.txt"
-            fi = open(fn,"w")
-            fi.write(str(self.electronic[0][0])+"."+str(self.finance[0][1]))
+
+            fi = open(fn,"a")
+            fi.write(str(self.electronic[0][0])+"."+str(self.electronic[0][1])+ "\n")
             fi.close()
         if type==2:
             print("Please enter the company name:")
@@ -53,8 +54,8 @@ class employer:
             self.finance[0][0]= self.wage
             self.finance[0][1]=self.company
             print(self.electronic[0][0])
-            fi = open(fn,"w")
-            fi.write(str(self.finance[0][0])+"."+str(self.finance[0][1]))
+            fi = open(fn,"a")
+            fi.write(str(self.finance[0][0])+"."+str(self.finance[0][1])+ "\n")
             fi.close()
         if type == 3:
             print("Please enter the company name:")
@@ -64,14 +65,27 @@ class employer:
             self.mechanics[0][0] = self.wage
             self.mechanics[0][1] = self.company
             print(self.electronic[0][0])
-            fi = open(fn, "w")
-            fi.write(str(self.mechanics[0][0]) + "." + str(self.mechanics[0][1]))
+            fi = open(fn, "a")
+            fi.write(str(self.mechanics[0][0]) + "." + str(self.mechanics[0][1])+ "\n")
             fi.close()
     def print_offers(self):
         f_name = self.name+"jobs.txt"
+        file = open(f_name,"r")
+        readed_content = file.readlines()
+        file.close()
+        word = []
+        for line in readed_content: 
+            word.append(line.split('.'))
+        res1, res2 = map(list, zip(*word))
+        print(res1)
+        print(res2)
 
 
-       
+
+
+
+
+
 
 print("---Welcome to the job forum---\n Please press 1 to search for job, 2 to post a job offer, press 3 to exit")
 choice = int(input())
@@ -130,6 +144,5 @@ if login_flag == True:
         c= int(input())
         if c == 1:
             employerA.make_a_new_offer()
-
-            
-            
+        if c ==2:
+            employerA.print_offers()
