@@ -1,17 +1,5 @@
 import os.path
-class worker:
-    def __init__(self, name, password):  # Each worker will have a name
-        self.name = name
-        self.password = password
 
-    def login(self, f_name):  # f_name is the name of the file.
-        login_file = open(f_name, "r")
-        data = login_file.readline()
-        test = self.name + "." + self.password
-        if test != data:
-            print("Error")
-        else:
-            print("You are loged in")
 
 class employer:
     def __init__(self, name, password):
@@ -74,18 +62,30 @@ class employer:
         readed_content = file.readlines()
         file.close()
         word = []
-        for line in readed_content: 
+        for line in readed_content:
             word.append(line.split('.'))
         res1, res2 = map(list, zip(*word))
-        print(res1)
-        print(res2)
+        a=1
+        for company in range(len(res2)):
+            print(str(a)+'.'+res1[company]+' '+res2[company])
+            a=a+1
 
 
+class worker(employer):
+    def __init__(self, name, password):  # Each worker will have a name
+        self.name = name
+        self.password = password
 
-
-
-
-
+    def login(self, f_name):  # f_name is the name of the file.
+        login_file = open(f_name, "r")
+        data = login_file.readline()
+        test = self.name + "." + self.password
+        if test != data:
+            print("Error")
+        else:
+            print("You are loged in")
+    def apply_for_a_job(self):
+        choice = int(input("Choose the job you want to apply for:"))
 
 print("---Welcome to the job forum---\n Please press 1 to search for job, 2 to post a job offer, press 3 to exit")
 choice = int(input())
@@ -146,3 +146,5 @@ if login_flag == True:
             employerA.make_a_new_offer()
         if c ==2:
             employerA.print_offers()
+    if flag == True:
+        worker1.print_offers()
